@@ -1,0 +1,26 @@
+.mail>input, .password>input{
+    width: 10vw;
+    height: 2vh;
+    padding-left: 10px;
+}
+.wrappersignin, .wrapperlogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+}
+.wrappersignin>.mail, .wrappersignin>.password, .wrapperlogin>.mail, .wrapperlogin>.password{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 10vh;
+}
+.wrappersignin>.mail, .wrappersignin>.password{
+    background-color: darkseagreen;
+}
+.wrapperlogin>.mail, .wrapperlogin>.password{
+    background-color: deepskyblue;
+}

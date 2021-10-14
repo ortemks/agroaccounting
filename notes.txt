@@ -1,0 +1,38 @@
+work example - 
+
+    {
+        'date': '',
+        'firm': '',
+        'fuel': '',
+        'worker': '',
+        'measure': '',
+        'filedNum': '',
+        'workType': '',
+        'mechanism': '',
+        'outfit': '',
+        'mechanismNum': '',
+        'done': '',
+        'fuelConsumption': '',
+        'employeePrice': '',
+        'invItems': '',,
+        'measureSecond': '',
+        'amount': '',
+        'invItemsSecond': '',
+        'measureThird': ''
+        'amountSecond': '',
+        'comment': '',
+        'status': ''
+    }
+
+refueling example - 
+{
+    'date': '',
+    'innerNum': '',
+    'firm': '',
+    'technique': '',
+    'fueled': '',
+    'arrival': '',
+    'fuelType': '',
+    'comment': '',
+    'status': '' 
+}
