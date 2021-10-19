@@ -25,7 +25,7 @@ let refueling = new Schema({
     comment: {
         type: String
     },
-    status: {
+    confirmed: {
         type: Boolean
     }
 })

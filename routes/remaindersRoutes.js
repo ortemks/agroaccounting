@@ -24,4 +24,30 @@ router.post(URL, async (req, res) => {
     Remainder.create({...remainder})
 });
 
+router.delete(URL, async (req, res) => {
+    let ids = req.body;                                                  
+    await Remainder.deleteMany({_id: { $in: ids}});          
+})
+
+router.patch(URL, async (req, res) => {
+    let options = {...req.body};                              
+    await Remainder.findByIdAndUpdate(options.id, options);         
+})
+
+router.patch(`${URL}/confirmed`, async (req, res) => {
+    console.log(req.body);
+    let confirmed = req.body.confirmed;
+    let disconfirmed = req.body.disconfirmed;
+    await Remainder.bulkWrite([
+        { updateMany: {
+            filter: { _id: { $in: confirmed} },
+            update: { confirmed: 'true'}
+        }},
+        { updateMany: {
+            filter: { _id: { $in: disconfirmed} },
+            update: { confirmed: 'false'}
+        }}
+    ])
+})
+
 module.exports = router;

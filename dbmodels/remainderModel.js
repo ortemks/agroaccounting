@@ -15,6 +15,9 @@ let remainder = new Schema({
     },
     amount: {
         type: String
+    },
+    confirmed: {
+        type: Boolean
     }
 });
 

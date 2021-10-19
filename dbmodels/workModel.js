@@ -61,8 +61,8 @@ let work = new Schema({
         comment: {
             type: String
         },
-        status: {
-            type: Boolean
+        confirmed: {
+            type: String
         }
     });
     

@@ -36,6 +36,9 @@ let arrival = new Schema({
     },
     coment: {
         type: String
+    },
+    confirmed: {
+        type: Boolean
     }
 })
 
