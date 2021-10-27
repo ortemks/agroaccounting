@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const URL = '/api/arrivals';
+const URL = '/api/accounting/arrivals';
 
 const Arrival = require('../dbmodels/arrivalModel');
 

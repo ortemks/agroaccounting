@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const URL = '/api/works';
+const URL = '/api/accounting/works';
 
 const Work = require('../dbmodels/workModel');
 

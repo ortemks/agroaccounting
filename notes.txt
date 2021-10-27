@@ -1,38 +1,68 @@
 work example - 
 
     {
-        'date': '',
-        'firm': '',
-        'fuel': '',
-        'worker': '',
-        'measure': '',
-        'filedNum': '',
-        'workType': '',
-        'mechanism': '',
-        'outfit': '',
-        'mechanismNum': '',
-        'done': '',
-        'fuelConsumption': '',
-        'employeePrice': '',
-        'invItems': '',,
-        'measureSecond': '',
-        'amount': '',
-        'invItemsSecond': '',
-        'measureThird': ''
-        'amountSecond': '',
-        'comment': '',
-        'status': ''
+        "date": "",
+        "firm": "",
+        "fuel": "",
+        "worker": "",
+        "measure": "",
+        "filedNum": "",
+        "workType": "",
+        "mechanism": "",
+        "outfit": "",
+        "mechanismNum": "",
+        "done": "",
+        "fuelConsumption": "",
+        "employeePrice": "",
+        "invItems": "",
+        "measureSecond": "",
+        "amount": "",
+        "invItemsSecond": "",
+        "measureThird": "",
+        "amountSecond": "",
+        "comment": "",
+        "confirmed": ""
     }
 
 refueling example - 
-{
-    'date': '',
-    'innerNum': '',
-    'firm': '',
-    'technique': '',
-    'fueled': '',
-    'arrival': '',
-    'fuelType': '',
-    'comment': '',
-    'status': '' 
-}
+    
+    {
+        'date': '',
+        'innerNum': '',
+        'firm': '',
+        'technique': '',
+        'fueled': '',
+        'arrival': '',
+        'fuelType': '',
+        'comment': '',
+        'confirmed': '' 
+    }
+
+arrival example -
+    
+    {
+        'date': '',
+        firm': '',
+        'responsible': '',
+        'spending': '',
+        'provider': '',
+        'stuffName': '',
+        'measure': '',
+        'amount': '',
+        'currency': '',
+        'price': '',
+        'sum': '',
+        'comment': '',
+        'confirmed': ''
+    }
+
+remainder example -
+
+    {
+        'date': '',
+        'firm': '',
+        'invItem': '',
+        'measure': '',
+        'amount': '',
+        'confirmed': ''
+    }

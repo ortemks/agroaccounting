@@ -12,13 +12,18 @@ const remaindersRoutes = require('./routes/remaindersRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 
 app.use(express.static(`${__dirname}/client`));
-app.use(express.json())
+app.use(express.json());
 
 app.use(worksRoutes);
 app.use(refuelingsRoutes);
 app.use(arrivalsRoutes);
 app.use(remaindersRoutes);
+app.all('/api/accounting', (req, res, next) => {
+    
+})
+
 app.use(usersRoutes);
+
 
 
 async function start(){

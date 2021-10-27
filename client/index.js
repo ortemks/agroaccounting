@@ -1,3 +1,5 @@
+
+
 document.forms.login.addEventListener('submit', async (event) => {
     event.preventDefault();
     let user = {
@@ -5,8 +7,17 @@ document.forms.login.addEventListener('submit', async (event) => {
         password: event.target.password.value
     };
     console.log(user);
-    request('api/users', 'POST', user);
-});
+    data =  {
+      confirmed: [
+        '616b084269e5eb37fffb4990',
+        '616b07fa69e5eb37fffb498e'
+      ],
+      disconfirmed: [
+        '616b083e69e5eb37fffb498f'
+      ]
+    } ;
+    request('/api/works/confirmed', 'PATCH', data);
+    });
 document.forms.signin.addEventListener('submit', (event) => {
     event.preventDefault();
     console.log(event.target.mail.value + ' ' + event.target.password.value);
@@ -33,9 +44,4 @@ async function request(url, method = 'GET', data = null) {
     }
   }
 
-let user = {
-        name: 'a204',
-        password: '130585'
-    }
-let {name, password} = {...user};
-console.log(name, password);
+

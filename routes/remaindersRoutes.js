@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const URL = '/api/remainders';
+const URL = '/api/acconting/remainders';
 
 const Remainder = require('../dbmodels/remainderModel');
 
