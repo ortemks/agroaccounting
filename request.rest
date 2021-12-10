@@ -1,8 +1,10 @@
-
-POST http://localhost:3000/api/users
+PATCH http://localhost:3000/api/reference-book/measurements
 Content-Type: application/json
 
+
 {
-    "email":"baklagankis@gmail.com",
-    "password":"Artem221219"
+   "_id": "61b1dde52a9794fcbc1c7709",
+   "standardMeasureUnit": "секунды"
 }
+
+
