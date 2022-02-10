@@ -18,7 +18,7 @@ To run the app in production mode, follow next advices:
   - include debug module
   - set StrongLoop as systemd service to automatically restart server on crashing and updates.
   - Wrap server communication in HTTPS
-  - use "npm run deploy" in terminal. If it doesn't work, more likely folder "dist" which contains compiled JS files doesn't exist - in this case use script "compile"
+  - use "npm run deploy" in terminal - it creates "dist" folder in root directory which containts compiled JS files 
  
  
   
