@@ -1,0 +1,14 @@
+DELETE   http://localhost:3000/api/firms
+Content-Type: application/json
+Cookie: user_id=j%3A%2261ddce47409ce5ca82b3652%22; Path=/; HttpOnly; SameSite=Strict
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJtcyI6WyI2MWRkY2RmNzQwOWNlNWNhODJiMzY1MWYiLCI2MWRlYzgzMmFlM2UxMGM0MmNmMzI1NjAiXSwicm9sZSI6IkFkbWluaXN0cmF0b3IiLCJpYXQiOjE2NDM4OTMzMTQsImV4cCI6MTY0Mzg5NjkxNH0.yRAyuabXsOfDw65PeCdwHm9dpLae2gWy8ZyEuH1j2xg
+
+{
+    "_id": "61ddcdf7409ce5ca82b3651a"
+}
+
+
+
+
+
+

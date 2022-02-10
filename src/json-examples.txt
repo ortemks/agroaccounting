@@ -1,0 +1,218 @@
+user example - 
+{
+    "_id": "61ddce47409ce5ca82b36520",
+    "mail": "ortemksl@gmail.com",
+    "password": "130fsf5",
+    "firms": ["61ddcdf7409ce5ca82b3651f", "61dec832ae3e10c42cf32560"],
+    "role": "Administrator",
+    "banned": "false",
+    "secret": "3414k1rffgkskdgk3r13414wqrq3r"
+}
+
+firm example - {
+    "_id": "61dec832ae3e10c42cf32560",
+    "name": "Проминь",
+    "disabled": "false"
+}
+
+
+work example - 
+{
+  "workType": "61f12ca4983c70bc326f3344",
+  "workDone": 178164,
+  "workDoneMU": "61f11d5814b555fc955830ed",
+  "arrival": [
+    {
+      "inventoryItem": "61f3f429dc51592bb8b4060c",
+      "amount": 32,
+      "amountMU": "61f1bdd8d7a4491d76ffeabb",
+      "_id": "61f3f6ab20f0fe39567085cb"
+    }
+  ],
+  "spending": [
+    {
+      "inventoryItem": "61f3f454dc51592bb8b40613",
+      "amount": 202,
+      "amountMU": "61f1bdd8d7a4491d76ffeabb",
+      "_id": "61f3f6ab20f0fe39567085cc"
+    }
+  ],
+  "worker": "61f1290414b555fc9558311b",
+  "fieldNum": "61f12dde983c70bc326f335a",
+  "mechanism": "61f12d4c983c70bc326f334a",
+  "outfit": "61f12e1c983c70bc326f335e",
+  "fuelType": "61f127cc14b555fc95583112",
+  "fuelSpent": 42424,
+  "fuelSpentMU": "61f11d5814b555fc955830ed",
+  "_id": "61f3f6ab20f0fe39567085ca",
+  "date": "2022-01-01T00:00:00.000Z",
+  "firm": "61ddcdf7409ce5ca82b3651f",
+  "confirmed": false
+}
+
+refueling example - 
+{   
+    "innerNum": "61f12d4c983c70bc326f334a",
+    "fuelOrLub: "61f127cc14b555fc95583112",
+    "spent": 33,
+    "spentMU": "61f11d5814b555fc955830ed",
+    "_id": "61f3f6ab20f0fe39567085ca",
+    "date": "2022-01-01T00:00:00.000Z",
+    "firm": "61ddcdf7409ce5ca82b3651f",
+    "confirmed": false
+}
+
+arrival example - 
+{   
+    "inventoryItem": "61f127cc14b555fc95583a54",
+    "arrived": 424,
+    "arrivedMU: "61f11d5814b555fc955830ed",
+
+    "price": {
+        "amount": 11,
+        "currency": "$"
+    },
+
+    "worker": "61f1290414b555fc9558311b",
+    "provider": "61f1290414b555fc955842fa",
+    "_id": "61f3f6ab20f0fe39567085ca",
+    "date": "2022-01-01T00:00:00.000Z",
+    "firm": "61ddcdf7409ce5ca82b3651f",
+    "confirmed": false
+}
+
+inventorisation remainder example - 
+{
+    "inventoryItem": "61f127cc14b555fc95583a54",
+    "amount": 242,
+    "amountMU": "61f11d5814b555fc955830ed",
+    "_id": "61f3f6ab20f0fe39567085ca",
+    "date": "2022-01-01T00:00:00.000Z",
+    "firm": "61ddcdf7409ce5ca82b3651f",
+    "confirmed": false
+}
+
+
+
+
+non firm-dependent schemas:
+
+
+1. measurement -
+
+{   
+    "_id": "61f11d5814b555fc955811ab",
+    "name": "масса",
+    "standardMeasureUnit": "61f11d5814b555fc955830ed",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "entityName": "Measurement"
+}
+
+2. measure unit - {
+    "_id": "61f11d5814b555fc955834ed",
+    "name": "тонна",
+    "measurement": "61f11d5814b555fc955811ab",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "entityName": "MeasureUnit"
+}
+
+3. inventory-item -
+
+{
+    "_id": "61f11d5814b555fc955831dd",
+    "name": "аи-92",
+    "consumptionType": "топлива",
+    "measurement": "61f11d5814b555fc955831a7",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "description": "бензин",
+    "entityName": "InventoryItem"
+}
+
+4. work-type - 
+
+{   
+    "_id": "61f12ca4983c70bc326f3344",
+    "name": "посев",
+    "measurement": ["61f11d5814b555fc955831a7", "61f11d5814b555fc955811ab"],
+    "arrival": [],
+    "spending": ["61f11d5814b555fc955831dc", "61f11d5814b555fc955831da"],
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "description": "орошение,удобрение почвы",
+    "entityName": "WorkType"
+}
+
+5. mechanism -
+
+{
+    "_id": "61f12d4c983c70bc326f334a",
+    "name": "мтз - 382",
+    "fuelUsed": ["61f11d5814b555fc955831dd"],
+    "oilUsed: ["61f11d5814b555fc955822ad", "61f11d5814b555fc955822ac"],
+    "changedBy: "61ddce47409ce5ca82b36520",
+    "description": "трактор",
+    "entityName": "Mechanism"
+}
+
+6. outfit -
+
+{
+    "_id": "61f12e1c983c70bc326f335e",
+    "name": "джон - дир",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "description": "используется для внедрения химии в почву",
+    "entityName": "Outfit"
+}
+
+7. provider -
+
+{
+    "_id": "61f1290414b555fc955842fa",
+    "name": "ТОВ 'Таго Трейд'",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "entityName": "Provider"
+}
+
+8. working-post -
+
+{   
+    "_id": "61f1290414b555fc95584133",
+    "name": "учетчик",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "entityName": "WorkingPost"
+}
+
+
+
+firm dependent entity schema
+
+
+1. field-numer - 
+
+{   
+    "_id": "61f1290414b555fc95584ac1",
+    "firm": "61ddcdf7409ce5ca82b3651f",
+    "name": "42-53",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "entityName": "FieldNumber"
+}
+
+2. mechanism inner-number - 
+
+{   
+    "_id": "61f1290414b555fc9558dda",
+    "firm": "61ddcdf7409ce5ca82b3651f",
+    "name": "пд31",
+    "mechanism": "61f12d4c983c70bc326f334a",
+    "changedBy": "61ddce47409ce5ca82b36520",
+    "entityName": "MechanismInnerNumber"
+}
+
+3. worker - 
+
+{   
+    "_id": "61f1290414b555fc9558311b",
+    "firm": "61ddcdf7409ce5ca82b3651f",
+    "name": "Cулик В.И.",
+    "workingPosts": ["61f1290414b555fc95584133", "61f1290414b555fc95584131],
+    "entityName": "Worker"
+}

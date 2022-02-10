@@ -1,0 +1,7 @@
+GET http://localhost:3000/api/users/interactions/refresh
+Content-Type: application/json
+
+{
+    "mail": "ortemksl@gmail.com",
+    "password": "Artem135"
+}
