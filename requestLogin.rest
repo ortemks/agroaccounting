@@ -1,7 +1,7 @@
-GET http://localhost:3000/api/users/interactions/refresh
+GET http://localhost:3000/api/users/interactions/login 
 Content-Type: application/json
 
 {
-    "mail": "ortemksl@gmail.com",
-    "password": "Artem135"
+    "email": "ortemksl@gmail.com",
+    "password": "Artem1305"
 }

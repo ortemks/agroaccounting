@@ -9,6 +9,9 @@ import setRouter from './router';
 
 import { UserProperties } from '../user-interface';
 import userModel from '../mongoose-model';
+import firmRestrictions from '../../../suport-modules/functions/firm-restrictions';
+import { MongooseDoc } from './interface';
+import { ObjectId } from '../../../suport-modules/types/primitive-types';
 
 
 export default class Interaction implements InteractionIntrace {
@@ -17,27 +20,31 @@ export default class Interaction implements InteractionIntrace {
     router: Router = Router();
     userModel: mongoose.Model<UserProperties> = userModel;
     
+
+
     methods: { 
-        login(userCredentials: methodsData.login): Promise<{ refreshToken: string; accessToken: string; userId: string | mongoose.Types.ObjectId; }>; 
+        login(userCredentials: methodsData.login): Promise<{tokens: { refreshToken: string, accessToken: string }, userProperties: MongooseDoc<Omit<UserProperties, 'secret'>>, availableUsers: MongooseDoc<Omit<UserProperties, 'secret'>>[] }>;
         refresh(refreshToken: methodsData.refresh): Promise<{refreshToken:string, accessToken: string}>; 
         credentialsUpdate(userCredentialsWithNewPassword: methodsData.credentialsUpdate): Promise<void>; 
     } = {
         login: async function (this: Interaction, userCredentials) {
-            let email = userCredentials.email;
-            let user = await this.userModel.findOne({ email: email });
-            if (!user) throw { value: email, path: 'email', name: `user with passed email doesn't exist`, type: 'BAD CREDENTIALS' };
-            if (user.banned) throw { value: email, path: 'email', name: `user with passed email has been banned`, type: 'BAD CREDENTIALS' }
+            const statedEmail = userCredentials.email;
+            const user = await this.userModel.findOne({ email: statedEmail }, {secret: 0}) as MongooseDoc<Omit<UserProperties,'secret'>>;
+            if (!user) throw { value: statedEmail, path: 'email', name: `user with passed email doesn't exist`, type: 'BAD CREDENTIALS' };
+            if (user.banned) throw { value: statedEmail, path: 'email', name: `user with passed email has been banned`, type: 'BAD CREDENTIALS' }
             
-            let password = userCredentials.password;
-            if (user.password !== password) throw { value: password, name: `wrong password`, type: 'BAD CREDENTIALS' };
+            const statedPassword = userCredentials.password;
+            if (user.password !== statedPassword) throw { value: statedPassword, name: `wrong password`, type: 'BAD CREDENTIALS' };
 
             let newSecretKey = randomBytes(64).toString('hex');
+            await user.updateOne({ secret: newSecretKey });
             
-            await user.updateOne({ secret: newSecretKey })
-            let refreshToken: string = jwt.sign({}, newSecretKey);
-            let accessToken: string = jwt.sign({ firms: user.firms, role: user.role}, newSecretKey, { expiresIn: '1 hour'});
-
-            return { refreshToken: refreshToken, accessToken: accessToken, userId: user._id }
+            const availableUsers = await this.getAvailableUsersInfo(user);
+            const tokens = {
+                refreshToken: jwt.sign({}, newSecretKey),
+                accessToken: jwt.sign({ firms: user.firm, role: user.role}, newSecretKey, { expiresIn: '1 hour'})
+            }
+            return { tokens, userProperties: user, availableUsers }
         },
         refresh: async function (this: Interaction, refreshData) {
             let userId = refreshData.userId;
@@ -51,7 +58,7 @@ export default class Interaction implements InteractionIntrace {
             
             await user.updateOne({ secret: newSecretKey });
             let refreshToken: string = jwt.sign({}, newSecretKey);
-            let accessToken: string = jwt.sign({ firms: user.firms, role: user.role}, newSecretKey, { expiresIn: '1 hour'});
+            let accessToken: string = jwt.sign({ firms: user.firm, role: user.role}, newSecretKey, { expiresIn: '1 hour'});
 
             return { refreshToken: refreshToken, accessToken: accessToken }
         },
@@ -109,5 +116,14 @@ export default class Interaction implements InteractionIntrace {
         setRouter.call(this, this.router);
 
         Interaction.interactionInstance = this;
+    }
+
+    private async getAvailableUsersInfo(user: {role: string, firm: ObjectId[], [key: string]: any}): Promise<MongooseDoc<Omit<UserProperties, 'secret'>>[]> {
+        if (user.role === 'Checkman') return [];
+
+        const userQuery = {};
+        if (user.firm.length > 0) firmRestrictions.onFind(userQuery, user.firm);
+        const otherUsers = await this.userModel.find(userQuery, {secret: 0});
+        return otherUsers
     }
 }

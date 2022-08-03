@@ -12,7 +12,7 @@ const registerSchema = Joi.object<methodsData.register>().keys({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).max(30).required(),
     role: Joi.string().valid(...userRoles).required(),
-    firms: Joi.array().items((Joi as any).objectId()).optional(),
+    firm: Joi.array().items((Joi as any).objectId()).optional(),
     banned: Joi.boolean().optional()
 })
 const updateUserSchema = Joi.object<methodsData.updateUser>().keys({
@@ -21,10 +21,7 @@ const updateUserSchema = Joi.object<methodsData.updateUser>().keys({
         email: Joi.string().email().optional(),
         password: Joi.string().min(6).max(30).optional(),
         role: Joi.string().valid(...userRoles),
-        firms: Joi.object().keys({
-            add: Joi.array().min(1).items((Joi as any).objectId()),
-            remove: Joi.array().min(1).items((Joi as any).objectId())
-        }).or('add', 'remove'),
+        firm: Joi.array().min(1).items((Joi as any).objectId()).unique(),
         banned: (Joi as any).objectId()
     }).or('mail', 'password', 'role', 'firms', 'banned')
 });

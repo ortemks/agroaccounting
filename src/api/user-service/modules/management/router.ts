@@ -26,6 +26,7 @@ export default function setRouter(this: Management, router: express.Router) {
             let userFirms = res.locals.user.firms;
             try {
                 let validData = this.dataValidation.updateUser(req.body);
+                console.log(userFirms)
                 await this.methods.updateUser(validData, { firmRestrictions: userFirms });
                 res.status(200).send('user succesfully updated')
             } catch (error) {

@@ -16,7 +16,7 @@ const authorizationSchema = Joi.object<methodsData.authorize>().keys({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).max(30).required(),
     role: Joi.string().valid(...userRoles).required(),
-    firms: Joi.array().items((Joi as any).objectId())
+    firm: Joi.array().items((Joi as any).objectId())
 })
 
 export default function getValidationSchema(schemaType: 'authenticate' | 'authorize'): Joi.Schema {

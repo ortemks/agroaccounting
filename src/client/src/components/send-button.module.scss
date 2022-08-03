@@ -1,0 +1,61 @@
+@use '../App-colors.scss' as colors;
+
+.sendIcon {
+    width: 30%;
+    height: 30%
+}
+
+.sendButtonLoadingBorder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 100px;
+	height: 100px;
+    background-color: colors.$secondary;
+    border-radius: 50%;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to { 
+        transform: rotate(360deg);
+    }
+}
+ 
+
+ @-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        width: 0%;
+    }
+    50% {
+        width: 90%;
+        -webkit-transform: rotate(180deg);
+    }
+    100% { 
+        width: 0%;
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.sendButton {
+	width: 90%;
+	height: 90%;
+	border:solid 10px #8822aa;
+	border-radius: 50%;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	 -webkit-transition: all 0.5s ease-in;
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         1.0s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+    transition: all 0.5s ease-in;
+    animation-name:             rotate; 
+    animation-duration:         1.0s; 
+    animation-iteration-count:  infinite;
+    animation-timing-function: ease; 
+}
+

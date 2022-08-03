@@ -1,0 +1,33 @@
+$button-size: 30px;
+
+.button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $button-size;
+    height: $button-size;
+}
+
+.eyeIconContainer  {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+}
+
+.eyeIcon  {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.crossingOutLine {
+    position: absolute;
+    background-color: black;
+    height: 1.5px;
+    transform: rotate(-45deg);
+    transition-duration: 300ms;
+}

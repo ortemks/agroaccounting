@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import { UserProperties } from './user-interface';
 
+import FirmModel from '../../firms/firm_modules/mongoose-model';
+
 const userSchema = new mongoose.Schema<UserProperties>({
     email: {
         type: mongoose.SchemaTypes.String,
@@ -16,7 +18,7 @@ const userSchema = new mongoose.Schema<UserProperties>({
         required: true,
         enum: ['Checkman', 'Administrator', 'Chief']
     },
-    firms:[{
+    firm:[{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Firm',
         required: false,
@@ -42,8 +44,8 @@ const userSchema = new mongoose.Schema<UserProperties>({
     }
 }, { versionKey: false } );
 
-const FirmModel = mongoose.model<UserProperties>('User', userSchema);
-export default FirmModel
+const UserModel = mongoose.model<UserProperties>('User', userSchema);
+export default UserModel
 
 
 

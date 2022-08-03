@@ -1,10 +1,13 @@
-DELETE   http://localhost:3000/api/firms
+PATCH   http://localhost:3000/api/users/management
 Content-Type: application/json
 Cookie: user_id=j%3A%2261ddce47409ce5ca82b3652%22; Path=/; HttpOnly; SameSite=Strict
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJtcyI6WyI2MWRkY2RmNzQwOWNlNWNhODJiMzY1MWYiLCI2MWRlYzgzMmFlM2UxMGM0MmNmMzI1NjAiXSwicm9sZSI6IkFkbWluaXN0cmF0b3IiLCJpYXQiOjE2NDM4OTMzMTQsImV4cCI6MTY0Mzg5NjkxNH0.yRAyuabXsOfDw65PeCdwHm9dpLae2gWy8ZyEuH1j2xg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJtcyI6WyI2MWRkY2RmNzQwOWNlNWNhODJiMzY1MWYiLCI2MWRlYzgzMmFlM2UxMGM0MmNmMzI1NjAiXSwicm9sZSI6IkFkbWluaXN0cmF0b3IiLCJpYXQiOjE2NTQ1MjEzOTQsImV4cCI6MTY1NDUyNDk5NH0.K33o83hec4XRn5MPusQsSVfWmiL-prScUEVOp2nh7Yo
 
 {
-    "_id": "61ddcdf7409ce5ca82b3651a"
+    "_id": "61ddce47409ce5ca82b36520",
+    "update": {
+        "firm": ["61dec832ae3e10c42cf32560"]
+    }
 }
 
 

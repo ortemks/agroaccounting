@@ -59,7 +59,7 @@ export default class Management implements ManagementInterface {
             if (!user) throw { value: updateOptions._id, name: `user with passed id doesn't exist`, type: 'BAD ID' };
             if (user.role === 'Chief') throw { value: updateOptions._id, name: `user with role "Chief" can't be changed`, type: 'BAD ID'};
             
-            await user.updateOne(updateOptions.update);
+            await user.updateOne(updateOptions.update, { runValidators: true });
         },
         removeUser: async function (this: Management, removeOptions, options = { firmRestrictions: [] }) {
             let filter = { _id: removeOptions._id };

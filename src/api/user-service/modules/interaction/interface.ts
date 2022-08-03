@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
+import { UserProperties } from '../user-interface';
 
+export type MongooseDoc<T> = mongoose.Document<unknown, any, T> & T & {_id: mongoose.Types.ObjectId}
 export namespace methodsData {
     export type login = {email: string, password: string}
     export type refresh = {refreshToken: string, userId: mongoose.Types.ObjectId | string};
@@ -8,7 +10,7 @@ export namespace methodsData {
 
 export default interface InteractionInterface {
     methods: {
-        login(userCredentials: methodsData.login): Promise<{refreshToken: string, accessToken: string, userId: mongoose.Types.ObjectId | string}>;
+        login(userCredentials: methodsData.login): Promise<{tokens: { refreshToken: string, accessToken: string }, userProperties: MongooseDoc<Omit<UserProperties, 'secret'>>, availableUsers: MongooseDoc<Omit<UserProperties, 'secret'>>[] }>;
         refresh(refreshToken: methodsData.refresh): Promise<{refreshToken: string, accessToken: string}>;
         credentialsUpdate(update: methodsData.credentialsUpdate): Promise<void>;
     }

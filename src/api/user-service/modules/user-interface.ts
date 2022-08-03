@@ -6,7 +6,7 @@ export interface UserProperties {
     email: string,
     password: string,
     role: UserRole,
-    firms: Array<mongoose.Types.ObjectId | string>,
+    firm: Array<mongoose.Types.ObjectId | string>,
     secret: string,
     banned: boolean
 }
